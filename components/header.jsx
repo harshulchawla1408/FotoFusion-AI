@@ -50,7 +50,13 @@ export default function Header() {
               Pricing
             </Link>
             <Link
-              href="#contact"
+              href="/about"
+              className="text-white font-medium transition-all duration-300 hover:text-cyan-400 cursor-pointer"
+            >
+              About
+            </Link>
+            <Link
+              href="/contact"
               className="text-white font-medium transition-all duration-300 hover:text-cyan-400 cursor-pointer"
             >
               Contact

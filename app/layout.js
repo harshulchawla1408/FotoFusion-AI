@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 import { ConvexClientProvider } from "@/components/convex-client-provider";
 import { ClerkProvider } from "@clerk/nextjs";
 import { shadesOfPurple } from "@clerk/themes";
@@ -11,7 +12,7 @@ import { Toaster } from "sonner";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Pixxel",
+  title: "FotoFusion AI",
   description: "Professional image editing powered by AI",
 };
 
@@ -42,6 +43,7 @@ export default function RootLayout({ children }) {
 
                 {children}
               </main>
+              <Footer />
             </ConvexClientProvider>
           </ClerkProvider>
         </ThemeProvider>

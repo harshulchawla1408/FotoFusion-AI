@@ -6,6 +6,12 @@ import PricingSection from "@/components/pricing";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
+import {
+  Crop,
+  Expand,
+  SlidersHorizontal,
+  Sparkles,
+} from "lucide-react";
 
 // Hero Section Component
 const HeroSection = () => {
@@ -17,11 +23,22 @@ const HeroSection = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  const tools = [
+    { icon: Crop, label: "Crop" },
+    { icon: Expand, label: "Resize" },
+    { icon: SlidersHorizontal, label: "Adjust" },
+    { icon: Sparkles, label: "AI Tools" },
+  ];
+
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
       <div className="text-center z-10 px-6">
         <div
-          className={`transition-all duration-1000 ${textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+          className={`transition-all duration-1000 ${
+            textVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+          }`}
         >
           <h1 className="text-6xl md:text-9xl font-black mb-6 tracking-tight">
             <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent animate-pulse">
@@ -49,46 +66,48 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* 3D Demo Interface */}
+        {/* Demo Interface */}
         <div
           className={`relative max-w-4xl mx-auto transition-all duration-1000 ${
             textVisible
               ? "opacity-100 translate-y-0"
               : "opacity-0 translate-y-20"
-          } ${demoHovered ? "transform scale-105 rotate-y-6" : ""}`}
+          } ${demoHovered ? "scale-105 rotate-y-6" : ""}`}
           onMouseEnter={() => setDemoHovered(true)}
           onMouseLeave={() => setDemoHovered(false)}
           style={{ perspective: "1000px" }}
         >
-          <div className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl p-6 transform-gpu">
+          <div className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl p-6">
             <div className="bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-8 min-h-96">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex space-x-2">
-                  <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                  <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <div className="w-3 h-3 bg-red-500 rounded-full" />
+                  <div className="w-3 h-3 bg-yellow-500 rounded-full" />
+                  <div className="w-3 h-3 bg-green-500 rounded-full" />
                 </div>
                 <div className="text-gray-400 text-sm">Pixxel Pro</div>
               </div>
 
+              {/* Tool Icons */}
               <div className="grid grid-cols-4 gap-4 mb-6">
-                {[
-                  { icon: "✂️", label: "Crop" },
-                  { icon: "📐", label: "Resize" },
-                  { icon: "🎨", label: "Adjust" },
-                  { icon: "🤖", label: "AI Tools" },
-                ].map((tool, index) => (
+                {tools.map(({ icon: Icon, label }, index) => (
                   <div
                     key={index}
-                    className="backdrop-blur-lg bg-white/5 rounded-xl p-4 text-center hover:bg-white/10 transition-all cursor-pointer"
-                    title={tool.label}
+                    className="backdrop-blur-lg bg-white/5 rounded-xl p-4 text-center
+                               hover:bg-white/10 transition-all cursor-pointer group"
                   >
-                    <div className="text-2xl mb-1">{tool.icon}</div>
-                    <div className="text-xs text-gray-400">{tool.label}</div>
+                    <Icon
+                      className="w-7 h-7 mx-auto mb-2 text-cyan-400
+                                 group-hover:text-purple-400
+                                 drop-shadow-[0_0_12px_rgba(34,211,238,0.6)]
+                                 transition-all"
+                    />
+                    <div className="text-xs text-gray-400">{label}</div>
                   </div>
                 ))}
               </div>
 
+              {/* Canvas */}
               <div className="flex items-center justify-center">
                 <div className="w-full h-48 bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 rounded-2xl shadow-2xl shadow-blue-500/50 flex items-center justify-center">
                   <div className="text-white font-bold">Your Canvas</div>
@@ -111,7 +130,7 @@ const App = () => {
       <FeaturesSection />
       <PricingSection />
 
-      {/* Final CTA Section */}
+      {/* Final CTA */}
       <section className="py-20 text-center">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="text-5xl font-bold mb-6">
@@ -126,7 +145,7 @@ const App = () => {
           </p>
           <Link href="/dashboard">
             <Button variant="primary" size="xl">
-              🌟 Start Creating Now
+              Start Creating Now
             </Button>
           </Link>
         </div>
