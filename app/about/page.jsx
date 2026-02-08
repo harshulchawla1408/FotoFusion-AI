@@ -2,18 +2,18 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { 
   Sparkles, 
   Zap, 
-  Image, 
   Palette, 
   Scissors, 
   Move,
-  Wand2,
   Brain,
   Rocket,
   Shield,
+  Image as ImageIcon,
   Star
 } from "lucide-react";
 
@@ -105,7 +105,7 @@ const HeroSection = () => {
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { icon: <Image className="w-6 h-6" />, label: "Enhance", color: "from-blue-500 to-cyan-500" },
+              { icon: <ImageIcon className="w-6 h-6" />, label: "Enhance", color: "from-blue-500 to-cyan-500" },
               { icon: <Palette className="w-6 h-6" />, label: "Filters", color: "from-purple-500 to-pink-500" },
               { icon: <Scissors className="w-6 h-6" />, label: "Crop", color: "from-green-500 to-emerald-500" },
               { icon: <Move className="w-6 h-6" />, label: "Resize", color: "from-orange-500 to-red-500" },
@@ -180,18 +180,15 @@ const WhoWeAre = () => {
                 </div>
               </div>
             </div>
-            
-            <div className="relative">
-              <div className="backdrop-blur-lg bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-white/20 rounded-2xl p-8">
-                <div className="text-center">
-                  <Wand2 className="w-16 h-16 text-white mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold text-white mb-2">Smart Technology</h3>
-                  <p className="text-gray-300">
-                    Our AI algorithms are trained on millions of images to deliver professional-grade results 
-                    every time.
-                  </p>
-                </div>
-              </div>
+            <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-3xl overflow-hidden border border-white/20 bg-black/30 flex items-center justify-center">
+              <Image
+                src="/hero.png"
+                alt="FotoFusion AI Technology"
+                fill
+                className="object-contain w-full h-full"
+                priority
+                sizes="(max-width: 768px) 100vw, 100vw"
+              />
             </div>
           </div>
         </div>
@@ -217,7 +214,7 @@ const WhatWeDo = () => {
       gradient: "from-blue-500 to-cyan-500"
     },
     {
-      icon: <Image className="w-8 h-8" />,
+      icon: <ImageIcon className="w-8 h-8" />,
       title: "Background Removal",
       description: "One-click background removal with edge-perfect precision for professional composites.",
       gradient: "from-purple-500 to-pink-500"
@@ -369,14 +366,16 @@ const FinalCTA = () => {
 // Main About Component
 const About = () => {
   return (
-    <div className="pt-36">
+    <main className="pt-32 bg-gradient-to-b from-[#0f172a] via-[#181c2a] to-[#1e293b] min-h-screen">
       <HeroSection />
-      <WhoWeAre />
-      <WhatWeDo />
-      <WhyFotoFusion />
-      <FinalCTA />
-    </div>
+      <section className="relative z-10">
+        <WhoWeAre />
+        <WhatWeDo />
+        <WhyFotoFusion />
+        <FinalCTA />
+      </section>
+    </main>
   );
 };
 
-export default About;
+export default About; 

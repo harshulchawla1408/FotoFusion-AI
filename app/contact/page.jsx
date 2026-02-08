@@ -32,7 +32,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section className="pt-12 pb-4 flex items-center justify-center relative">
       {/* Animated Background Elements */}
       <div className={`absolute inset-0 transition-opacity duration-2000 ${particlesVisible ? "opacity-100" : "opacity-0"}`}>
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
@@ -60,42 +60,7 @@ const HeroSection = () => {
           <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed">
             We'd love to hear from you. Whether you have questions, feedback, or want to share your creative journey, 
             our team is here to help.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
-            <Button variant="primary" size="xl">
-              <MessageCircle className="w-5 h-5 mr-2" />
-              Send us a Message
-            </Button>
-            <Button variant="glass" size="xl">
-              <Mail className="w-5 h-5 mr-2" />
-              support@fotofusion.ai
-            </Button>
-          </div>
-        </div>
-
-        {/* Floating Contact Icons */}
-        <div
-          className={`relative max-w-2xl mx-auto transition-all duration-1000 ${
-            textVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
-          }`}
-        >
-          <div className="flex justify-center space-x-8">
-            {[
-              { icon: <Mail className="w-6 h-6" />, label: "Email" },
-              { icon: <MessageCircle className="w-6 h-6" />, label: "Chat" },
-              { icon: <Phone className="w-6 h-6" />, label: "Call" },
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-2xl p-4 hover:bg-white/20 transition-all duration-300 hover:transform hover:scale-110"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="text-cyan-400 mb-2">{item.icon}</div>
-                <div className="text-white text-sm">{item.label}</div>
-              </div>
-            ))}
-          </div>
+          </p>        
         </div>
       </div>
     </section>
@@ -136,7 +101,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="py-20 relative">
+    <section className="py-8 relative">
       <div className="max-w-2xl mx-auto px-6">
         <div className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl p-8 md:p-12">
           <div className="text-center mb-8">
@@ -392,12 +357,12 @@ const FinalCTA = () => {
 // Main Contact Component
 const Contact = () => {
   return (
-    <div className="pt-36">
+    <main className="pt-20">
       <HeroSection />
       <ContactForm />
       <ContactInfo />
       <FinalCTA />
-    </div>
+    </main>
   );
 };
 
